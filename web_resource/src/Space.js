@@ -15,6 +15,7 @@ var canvas = null;
 var points = [];
 
 // 每个空间产生的star数量
+//공간당 생성되는 star 수입니다.
 var points_num = 200;
 
 var visual = {
@@ -23,7 +24,7 @@ var visual = {
     z: 10
 };
 
-// 模拟物体真实尺寸
+// 模拟物体真实尺寸 //오브젝트의 실제 크기를 시뮬레이션합니다.
 var visual_star_size = 3;
 
 var keys = {
@@ -35,13 +36,13 @@ var keys = {
     send: 13
 };
 
-// 矩形坐标
+// 矩形坐标 //직사각형 좌표입니다.
 var matrix_poi = {
     x: 0,
     y: 0
 };
 
-// 三维粒子分布范围
+// 三维粒子分布范围 //3D 입자 분포 범위입니다.
 var points_scope = {
     x: {
         min: 0,
@@ -57,10 +58,10 @@ var points_scope = {
     }
 };
 
-// 移动速度
+// 移动速度 //이동 속도.
 var move_speed = 2;
 
-// 移动方向
+// 移动方向 // 이동방향
 var move_direction = {
     up: false,
     down: false,
@@ -68,27 +69,27 @@ var move_direction = {
     right: false
 };
 
-// star随机移动的方向和距离
+// star 随机移动的方向和距离 //star가 임의로 이동하는 방향과 거리입니다.
 var random_points_update = [0.5, 0, 0];
 var random_points_update_key = true;
 var random_points_update_status = 0;
 
-// 缩放值
+// 缩放值 //배율 조정 값입니다.
 var zoom_scope_value = 0;
 
-// 当前画布序号
 var current_space = {
+    // 当前画布序号 //현재 캔버스 시퀀스 번호입니다.
     x: 0,
     y: 0
 };
 
 var mouse_poi = {x: 0, y: 0};
 
-// 输入框dom
+// 输入框 dom //상자 dom을 입력합니다.
 var input = null;
-// 如果开启input，禁止移动,默认关闭
+// 如果开启input，禁止移动,默认关闭 //input을 켜면 이동이 금지됩니다.
 var input_deny_move_key = false;
-// 输入的消息队列
+// 输入的消息队列 //입력한 메시지 큐입니다.
 var input_messages_queue = [];
 var show_message_box = null;
 
@@ -107,7 +108,7 @@ var bot_status = {
     gender: 0
 };
 
-// 状态记忆
+// 状态记忆 //상태 메모리.
 var bot_status_old = {};
 
 var is_ws_open = false;
@@ -117,7 +118,7 @@ var real_top_left_poi = {
     y: 0
 };
 
-// 维护客户列表
+// 维护客户列表 //고객 목록을 유지 관리합니다.
 var guest_bots = {};
 var guest_show_message_box = {};
 
@@ -137,15 +138,15 @@ function initCtx() {
         y: canvas.height / 2
     }
 
-    // 初始化视点
+    // 初始化视点 //관측점을 초기화합니다.
     visual.x = canvas.width / 2;
     visual.y = canvas.height / 2;
 
-    // 初始化粒子范围
+    // 初始化粒子范围 //입자 범위를 초기화합니다.
     points_scope.x.max = canvas.width;
     points_scope.y.max = canvas.height;
 
-    // 初始化粒子
+    // 初始化粒子 //입자를 초기화합니다.
     points = randomPoint();
 
     bot_status.bot_id = Math.random().toString(36).substr(2);
@@ -166,11 +167,11 @@ function canvasHandle() {
     drawn(ctx, points);
     matrixMove();
 
-    // 维护状态
+    // 维护状态 //상태를 유지 관리합니다.
     bot_status.x = visual.x;
     bot_status.y = visual.y;
 
-    // 尝试同步消息
+    // 尝试同步消息 //메시지를 동기화해 보십시오.
     sendStatusByWs();
 
     createGuestBot();
@@ -178,7 +179,7 @@ function canvasHandle() {
     window.requestAnimationFrame(canvasHandle);
 }
 
-// star 自然振动
+// star 自然振动 // star 자연 진동.
 function randomPointsUpdate() {
 
     setInterval(function () {
@@ -206,7 +207,7 @@ function immediateUpdate() {
 
 function randomPoint() {
 
-    // 计算每个space的宽高
+    // 计算每个space的宽高 //각 스페이스의 너비를 계산합니다.
     var width = points_scope.x.max - points_scope.x.min;
     var height = points_scope.y.max - points_scope.y.min;
 
@@ -215,7 +216,7 @@ function randomPoint() {
         var x = randomValue(current_space.x + width, current_space.x);
         var y = randomValue(current_space.y + height, current_space.y);
         var z = randomValue(points_scope.z.max, points_scope.z.min);
-        // 根据z轴 色彩递减
+        // 根据z轴 色彩递减 //z축에 따라 색상이 감소합니다.
         var c = computeColor(z);
         var s = computeSize(z);
 
@@ -241,6 +242,7 @@ function updatePoints(points, values = [0, 0, 0]) {
         p.z += values[2];
 
         // 重要：实现无限star！这个地方要保证粒子的绘制范围x,y 在canvas之内
+        //중요: 무제한 스타를 실현! 이 곳은 입자의 페인트 범위 x,y가 캔버스 내에 있도록 합니다.
         if (p.x > canvas.width) {
             p.x -= canvas.width;
         } else if (p.x < 0) {
@@ -263,30 +265,31 @@ function randomValue(max, min = 0) {
     return Math.floor(Math.random() * (max - min)) + min
 }
 
-// 颜色越来越深
+// 颜色越来越深 //색상이 점점 더 깊어지고 있습니다.
 function computeColor(z) {
     var v = Math.floor((z * (255 - 100)) / (points_scope.z.max - points_scope.z.min)) + 100
     return "rgb(" + v + "," + v + "," + v + ")";
 }
 
-// 尺寸越来越小
+// 尺寸越来越小 //크기는 점점 작아지고 있습니다.
 function computeSize(z) {
-    // 设定视点处，半径为10
+    // 设定视点处，半径为10 //반지름이 10인 관측점을 설정합니다.
     return z * visual_star_size / visual.z;
 }
 
-// 绘制star
+// 绘制 star //star를 그립니다.
 function drawn(ctx, points = []) {
     for (var i in points) {
         var p = pointConvert(points[i].x, points[i].y, points[i].z, points[i].c, points[i].s);
         // 这里要做一些舍弃动作,视野之外的粒子，不予绘制
+        //여기서는 비표시 입자가 그려지지 않는 몇 가지 포기 작업을 수행합니다.
         if (p.x < canvas.width || p.y < canvas.height) {
             drawnPoint(ctx, p.x, p.y, p.c, p.s)
         }
     }
 }
 
-// 核心转换算法
+// 核心转换算法 //핵심 변환 알고리즘.
 function pointConvert(x, y, z, c, s) {
     var p = {
         x: (x - visual.x) * visual.z / (visual.z - z) + visual.x,
@@ -305,13 +308,13 @@ function drawnPoint(ctx, x, y, c, s) {
     ctx.fill()
 }
 
-// 绘制矩形
+// 绘制矩形 //사각형을 그립니다.
 function drawMatrix(x = canvas.width / 2, y = canvas.height / 2) {
-    // 矩形
+    // 矩形 //사각형입니다.
     // ctx.fillStyle = "rgb(200,0,0)"
     // ctx.fillRect(x, y, 50, 30);
 
-    // 眼睛
+    // 眼睛 //눈
     ctx.beginPath();
     x = x + 5;
     y = y + 5;
@@ -324,11 +327,11 @@ function drawMatrix(x = canvas.width / 2, y = canvas.height / 2) {
 
     ctx.fill();
 
-    // 瞳孔
+    // 瞳孔 //동공.
     ctx.beginPath()
     var pupil = moveEye(x, y, 8);
 
-    // 维护botstatus eye
+    // 维护 botstatus eye //유지 보수 botstatus eye
     bot_status.e_x = pupil[0];
     bot_status.e_y = pupil[1];
 
@@ -347,13 +350,13 @@ function drawMatrix(x = canvas.width / 2, y = canvas.height / 2) {
 }
 
 
-// 绘制矩形
+// 绘制矩形 //사각형을 그립니다.
 function drawMatrixGuest(x = canvas.width / 2, y = canvas.height / 2, e_x, e_y, name, gender) {
-    // 矩形
+    // 矩形 사각형입니다.
     // ctx.fillStyle = "rgb(200,0,0)"
     // ctx.fillRect(x, y, 50, 30);
 
-    // 眼睛
+    // 眼睛 눈.
     ctx.beginPath();
     x = x + 5;
     y = y + 5;
@@ -367,7 +370,7 @@ function drawMatrixGuest(x = canvas.width / 2, y = canvas.height / 2, e_x, e_y, 
 
     ctx.fill();
 
-    // 瞳孔
+    // 瞳孔 // 동공.
     ctx.beginPath()
 
     ctx.arc(e_x, e_y, 4, 0, 2 * Math.PI);
@@ -385,6 +388,7 @@ function drawMatrixGuest(x = canvas.width / 2, y = canvas.height / 2, e_x, e_y, 
 }
 
 // x,y 的坐标是眼眶的坐标,理论上来讲，这个地方应该用角度来计算位置
+// x,y 좌표는 눈의 좌표이며 이론적으로 는 각도를 사용하여 위치를 계산해야합니다.
 function moveEye(x, y, r) {
 
     var r_pupil = 5;
@@ -430,15 +434,16 @@ function moveEye(x, y, r) {
     ];
 }
 
-// 事件
+// 事件 //이벤트
 function bindEvent() {
     window.addEventListener('keydown', (evt) => {
         // 如果input框弹出，那么禁止其他键盘事件
+        //input 상자가 팝업되면 다른 키보드 이벤트가 금지됩니다.
         if (input_deny_move_key && evt.keyCode != keys.send) {
             return false;
         }
 
-        // 缩放
+        // 缩放 //확대/축소합니다.
         switch (evt.keyCode) {
             case keys.up:
                 move_direction.up = true;
@@ -489,7 +494,7 @@ function bindEvent() {
         }
     })
 
-    // 获取当前鼠标位置
+    // 获取当前鼠标位置 //현재 마우스 위치를 가져옵니다.
     window.addEventListener("mousemove", (evt) => {
         mouse_poi = {
             x: evt.x, y: evt.y
@@ -548,7 +553,7 @@ function sendMessage() {
     var value = input.value;
     input.blur();
 
-    // 创建div
+    // 创建div //div를 만듭니다.
     if (show_message_box == null) {
         show_message_box = document.createElement("div");
         show_message_box.setAttribute("style", "position:fixed;" +
@@ -562,12 +567,12 @@ function sendMessage() {
 
     createMessageBubble(value)
 
-    // 发送文字消息
+    // 发送文字消息 //문자 메시지를 보냅니다.
     sendStatusByWs(value);
 }
 
 
-// 创建气泡
+// 创建气泡 거품을 만듭니다.
 function createMessageBubble(value) {
     var bubble = document.createElement('p')
     bubble.innerHTML = "<span style='padding:0 5px;margin:5px 0;display:inline-block;background-color:rgba(200,200,200,0.2);border:1px solid rgba(200,200,200,0.2);border-radius:10px;'>" + value + "</span>";
@@ -596,6 +601,7 @@ function createGuestBot() {
 
 /**
  * 如果guest不在视野范围之内，那么不进行绘制，节省绘制资源
+ * 게스트가 시야에 없는 경우 그리기가 없으면 그리기 리소스를 절약할 수 있습니다.
  * @param guestX
  * @param guestY
  */
@@ -621,7 +627,7 @@ function isShowGuest(guestX, guestY) {
 
 
 function showGuestMessage(name) {
-    // 创建div
+    // 创建div //div를 만듭니다.
     if (!guest_show_message_box[name]) {
 
         guest_show_message_box[name] = document.createElement("div");
@@ -636,7 +642,7 @@ function showGuestMessage(name) {
     }
 }
 
-// 创建气泡
+// 创建气泡 거품을 만듭니다.
 function createMessageBubbleGuest(name, value) {
     let bot = guest_bots[name];
     let show_message_box = guest_show_message_box[name];
@@ -673,7 +679,7 @@ function moveBubble() {
     }
 }
 
-// 核心移动
+// 核心移动 //코어 이동.
 function matrixMove() {
 
     var poi_y = matrix_poi.y;
@@ -699,11 +705,12 @@ function matrixMove() {
 
     if (x_speed || y_speed) {
         zoom('far');
-        // 设定martix的移动边界，为半径
+        // 设定martix的移动边界，为半径 // martix의 이동 경계를 반지름으로 설정합니다.
         var moveRaidus = 100;
 
         // 判断如果移动距离超过了canvas的中心moveRadius，那么停止移动，下一步进行star移动
-        // 1. 移动star
+        // 이동 거리가 캔버스의 중심인 moveRadius를 초과하면 이동을 중지하고 다음 star 이동을 수행합니다.
+        // 1. 移动star //star를 이동합니다.
         if (computeDistance(poi_x, poi_y, canvas.width / 2, canvas.height / 2) >= moveRaidus) {
             // 关闭随机移动
             random_points_update_key = false;
@@ -721,7 +728,7 @@ function matrixMove() {
             bot_status.r_y = real_top_left_poi.y;
 
         } else {
-            // 2. 移动矩形
+            // 2. 移动矩形 //사각형을 이동합니다.
             matrix_poi.y = poi_y;
             matrix_poi.x = poi_x;
         }
@@ -729,23 +736,23 @@ function matrixMove() {
         zoom('near');
     }
 
-    // 视点跟随
+    // 视点跟随 //관측점이 따라다.
     visual.x = matrix_poi.x;
     visual.y = matrix_poi.y;
 
-    // 气泡跟随
+    // 气泡跟随 // 거품이 따라다.
     moveBubble();
 
     drawMatrix(matrix_poi.x, matrix_poi.y);
 }
 
-// 视角缩放 far near
+// 视角缩放 far near //시야각 배율 이수 far near.
 function zoom(direction = 'far') {
-    // 步进灵敏度
+    // 步进灵敏度 스텝 감도.
     var acc = 0.1;
-    // 平滑灵敏度
+    // 平滑灵敏度 부드러운 감도.
     var pacc = 5;
-    // 变化范围
+    // 变化范围 변경 범위입니다.
     var scope = 1;
 
     if (direction == 'far') {
@@ -761,7 +768,7 @@ function zoom(direction = 'far') {
     }
 }
 
-// 计算两点的距离
+// 计算两点的距离 두 점 사이의 거리를 계산합니다.
 function computeDistance(x, y, x1, y1) {
     return Math.sqrt(Math.pow(x - x1, 2) + Math.pow(y - y1, 2))
 }
@@ -781,7 +788,7 @@ function createWebSocket() {
         var bot_list = r.getBotStatusList();
 
         for (var i in bot_list) {
-            // 如果收到广播连接断开，那么删除元素
+            // 如果收到广播连接断开，那么删除元素 //브로드캐스트 연결이 끊어지면 요소가 제거됩니다.
             if (bot_list[i].getStatus() === proto.botStatusRequest.status_type.CLOSE) {
                 delete guest_bots[bot_list[i].getBotId()];
                 continue;
@@ -879,8 +886,8 @@ function initTools() {
         "border-radius:5px;");
     document.body.appendChild(tool_box);
 
-    let name = createBtn(tool_box, 'image/human.png', '点我修改昵称');
-
+    //let name = createBtn(tool_box, 'image/human.png', '点我修改昵称');
+    let name = createBtn(tool_box, 'image/human.png', '닉네임을 수정해 주세요.');
     var input = null;
 
     name.addEventListener('click', (evt) => {
@@ -903,7 +910,8 @@ function initTools() {
             "font-size:12px"
         );
 
-        input.setAttribute('placeholder', '请输入昵称，长度10')
+        //input.setAttribute('placeholder', '请输入昵称，长度10')
+        input.setAttribute('placeholder', '닉네임 길이는 10자 이내로 입력하십시오.')
         input.setAttribute('maxlength', 10);
 
         document.body.appendChild(input)
@@ -921,14 +929,14 @@ function initTools() {
         })
     })
 
-    let genderMan = createBtn(tool_box, 'image/m.png', '男生');
+    let genderMan = createBtn(tool_box, 'image/m.png', '남성');
 
     genderMan.addEventListener('click', (evt) => {
         bot_status.gender = proto.botStatusRequest.gender_type.MAN
         localStorage.setItem('star_gender', bot_status.gender);
     });
 
-    let genderWoman = createBtn(tool_box, 'image/w.png', '女生');
+    let genderWoman = createBtn(tool_box, 'image/w.png', '여성');
     genderWoman.addEventListener('click', (evt) => {
         bot_status.gender = proto.botStatusRequest.gender_type.WOMAN
         localStorage.setItem('star_gender', bot_status.gender);
@@ -971,15 +979,24 @@ function createReadme() {
         "cursor:default;" +
         "border-radius:5px;");
     readme.innerHTML = "" +
-        "<p>欢迎进入游戏</p>" +
-        "<p>概念来自EVE游戏，以及蝌蚪聊天室，不过该游戏代码都是全新实现的</p>" +
-        "<p>操作方式：</p>" +
-        "<p>1. W A S D进行上下左右</p>" +
-        "<p>2. 空格开启聊天框，回车发送消息</p>" +
-        "<p>3. 左上角修改昵称，点击空白修改成功</p>" +
-        "<p>作者GIT：<a href='https://github.com/sunshinev/go-space-chat' style='color:rgba(200,200,200,0.8)'>https://github.com/sunshinev/go-space-chat</a></p>" +
-        "<p>前端 Vue+canvas+websocket+protobuf</p>" +
-        "<p>后端 Golang+websocket+protobuf+goroutine</p>";
+    // "<p> 게임에 오신 것을 환영합니다</p>" +
+    // "<p> EVE 게임과 채팅방에서 온 것이지만 게임 코드는 완전히 새로운 구현 입니다.</p>" +
+    // "<p> 방법: </p>" +
+    "<p>1. W A S D 는 상하좌우 </p>" +
+    "<p>2. space 는 메세지 보내기</p>" +
+    "<p>3. 좌 상단 닉네임 클릭(닉네임 수정 후 바깥 쪽을 클릭)</p>";
+    // "<p> GIT: <a href='https://github.com/sunshinev/go-space-chat' style='color:rgba(200,200,200,0.8)'>https://github.com/sunshinev/go-space-chat</a></p>"
+    // "<p> 프런트 엔드 Vue+canvas+websocket+protobuf</p>" +
+    // "<p> 백 엔드 Golang+websocket+protobuf+goroutine</p>";
+        // "<p>欢迎进入游戏</p>" +
+        // "<p>概念来自EVE游戏，以及蝌蚪聊天室，不过该游戏代码都是全新实现的</p>" +
+        // "<p>操作方式：</p>" +
+        // "<p>1. W A S D进行上下左右</p>" +
+        // "<p>2. 空格开启聊天框，回车发送消息</p>" +
+        // "<p>3. 左上角修改昵称，点击空白修改成功</p>" +
+        // "<p>作者GIT：<a href='https://github.com/sunshinev/go-space-chat' style='color:rgba(200,200,200,0.8)'>https://github.com/sunshinev/go-space-chat</a></p>" +
+        // "<p>前端 Vue+canvas+websocket+protobuf</p>" +
+        // "<p>后端 Golang+websocket+protobuf+goroutine</p>";
 
     document.body.appendChild(readme)
 }
@@ -987,7 +1004,7 @@ function createReadme() {
 
 function createDirectionSign() {
     // 根据两点
-
+    //두 가지 점을 기반으로 합니다.
 }
 
 export default function () {
@@ -999,3 +1016,4 @@ export default function () {
     createReadme();
     window.requestAnimationFrame(canvasHandle);
 };
+
