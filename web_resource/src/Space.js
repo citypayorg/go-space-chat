@@ -586,7 +586,9 @@ function createMessageBubble(value) {
 function createGuestBot() {
     for (var i in guest_bots) {
         if (i !== bot_status.bot_id && isShowGuest(guest_bots[i].r_x + guest_bots[i].x - real_top_left_poi.x, guest_bots[i].r_y + guest_bots[i].y - real_top_left_poi.y)) {
-            drawMatrixGuest(guest_bots[i].r_x + guest_bots[i].x - real_top_left_poi.x, guest_bots[i].r_y + guest_bots[i].y - real_top_left_poi.y, guest_bots[i].r_x + guest_bots[i].e_x - real_top_left_poi.x, guest_bots[i].r_y + guest_bots[i].e_y - real_top_left_poi.y, guest_bots[i].name, guest_bots[i].gender)
+            drawMatrixGuest(guest_bots[i].r_x + guest_bots[i].x - real_top_left_poi.x, guest_bots[i].r_y 
+                + guest_bots[i].y - real_top_left_poi.y, guest_bots[i].r_x + guest_bots[i].e_x - real_top_left_poi.x, guest_bots[i].r_y 
+                + guest_bots[i].e_y - real_top_left_poi.y, guest_bots[i].name, guest_bots[i].gender)
             // console.info(guest_bots[i].show_message_box)
             showGuestMessage(i)
             // console.info(guest_bots[i].show_message_box)
