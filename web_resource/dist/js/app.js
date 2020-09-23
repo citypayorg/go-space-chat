@@ -231,6 +231,26 @@
             r.addEventListener("click", (function (t) { k.gender = proto.botStatusRequest.gender_type.MAN, localStorage.setItem("star_gender", k.gender) }));
             var n = ct(t, "image/w.png", "여성");
             n.addEventListener("click", (function (t) { k.gender = proto.botStatusRequest.gender_type.WOMAN, localStorage.setItem("star_gender", k.gender) }))
+            //
+            var imgUp = ct(t, "image/up.jpg", "위로");
+            imgUp.addEventListener("mouseover", (function (t) { x.up = !0, x.down = !1;}));
+            imgUp.addEventListener("mouseout", (function (t) { x.up = !1;(S = !0, v = 1);}));
+
+            var imgDn = ct(t, "image/dn.jpg", "아래로");
+            imgDn.addEventListener("mouseover", (function (t) { x.up = !1, x.down = !0;}));
+            imgDn.addEventListener("mouseout", (function (t) { x.down = !1;(S = !0, v = 1);}));
+
+            // var imgStop = ct(t, "image/stop.jpg", "정지");
+            // imgStop.addEventListener("click", (function (t) { x.up = !1, x.down = !1;x.left = !1, x.right = !1;}));
+            // imgStop.addEventListener("mouseout", (function (t) { x.down = !1}));
+
+            var imgLeft = ct(t, "image/left.jpg", "좌로");
+            imgLeft.addEventListener("mouseover", (function (t) { x.left = !0, x.right = !1;}));
+            imgLeft.addEventListener("mouseout", (function (t) { x.left = !1;(S = !0, v = 1);}));
+
+            var imgRight = ct(t, "image/right.jpg", "우로");
+            imgRight.addEventListener("mouseover", (function (t) { x.right = !0, x.left = !1;}));
+            imgRight.addEventListener("mouseout", (function (t) { x.right = !1;(S = !0, v = 1);}));
         }
         function ct(t, e) {
             var o = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : "", r = document.createElement("img");
