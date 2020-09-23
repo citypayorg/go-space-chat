@@ -31,7 +31,7 @@ var conn_mutex sync.RWMutex
 var messages = make(chan *pb.BotStatusRequest, 100)
 
 var socket_addr = flag.String("socket_addr", ":9000", "socket address")
-var web_addr = flag.String("web_addr", ":8001", "http service address") //80
+var web_addr = flag.String("web_addr", ":8081", "http service address") //80
 
 var upgrader = websocket.Upgrader{}
 

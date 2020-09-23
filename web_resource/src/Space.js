@@ -32,7 +32,7 @@ var keys = {
     down: 83, // s
     left: 65, //a
     right: 68, //d
-    talk: 32, //space
+    talk: 32, //spacebar
     send: 13
 };
 

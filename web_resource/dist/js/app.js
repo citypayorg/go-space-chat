@@ -136,8 +136,15 @@
             })),
                 window.addEventListener("mousemove", (function (t) {
                     M = { x: t.x, y: t.y }
-                })), document.body.addEventListener("touchmove", (function (t) { t.preventDefault() }))
+                })), 
+                //dblclick
+                window.addEventListener("dblclick", (function (t) {
+                    K();
+                })),
+                document.body.addEventListener("touchmove", (function (t) { t.preventDefault() }))
+                
         }
+        // space bar 효과
         function K() {
             if (null != F) return !1; _ = !0, F = document.createElement("input"), F.setAttribute("style", "position:fixed;left:" + g.x + "px;top:" + (g.y + 30) + "px;background-color:rgba(200,200,200,0.2);border:1px solid rgba(200,200,200,0.2);border-radius:10px;padding:5px;outline:none;width:150px;color:white;font-size:12px"),
                 F.setAttribute("maxlength", 50),
@@ -233,7 +240,7 @@
         function ft() {
             var t = document.createElement("div");
             t.setAttribute("style", "position:fixed;left:5px;bottom:0px;width:500px;height:50;color:rgba(200,200,200,0.8);cursor:default;border-radius:5px;"),
-                t.innerHTML = "<p>1. W A S D 는 상하좌우 </p><p>2. space 는 메세지 보내기</p><p>3. 좌 상단 닉네임 클릭(닉네임 수정 후 바깥 쪽을 클릭)</p>"
+                t.innerHTML = "<p>1. W A S D 는 상하좌우 </p><p>2. spacebar (혹은 더블클릭)는 메세지 보내기</p><p>3. 좌 상단 닉네임 클릭(닉네임 수정 후 바깥 쪽을 클릭)</p>"
                 , document.body.appendChild(t)
         }
         var ht = function () {
