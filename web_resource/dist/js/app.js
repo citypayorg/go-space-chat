@@ -146,7 +146,7 @@
         }
         // space bar 효과
         function K() {
-            if (null != F) return !1; _ = !0, F = document.createElement("input"), F.setAttribute("style", "position:fixed;left:" + g.x + "px;top:" + (g.y + 30) + "px;background-color:rgba(200,200,200,0.2);border:1px solid rgba(200,200,200,0.2);border-radius:10px;padding:5px;outline:none;width:150px;color:white;font-size:12px"),
+            if (null != F) return !1; _ = !0, F = document.createElement("input"), F.setAttribute("style", "position:fixed;left:" + (g.x + 20) + "px;top:" + (g.y - 25) + "px;background-color:rgba(200,200,200,0.2);border:1px solid rgba(200,200,200,0.2);border-radius:10px;padding:5px;outline:none;width:150px;color:white;font-size:12px"),
                 F.setAttribute("maxlength", 50),
                 document.body.appendChild(F), F.addEventListener("focus", (function () { })),
                 F.addEventListener("blur", (function () { document.body.removeChild(F), F = null, _ = !1 })), F.focus()
