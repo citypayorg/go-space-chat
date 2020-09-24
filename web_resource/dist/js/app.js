@@ -14,43 +14,85 @@
                 0 !== n[u] && (r = !1)
             } r && (i.splice(e--, 1), t = a(a.s = o[0]))
         } return t
-    } var r = {}, n = { app: 0 }, i = []; function a(e) {
+    }
+    var r = {}, n = { app: 0 }, i = []; 
+    function a(e) 
+    {
         if (r[e]) return r[e].exports; var o = r[e] = {
             i: e, l: !1, exports: {}
-        }; return t[e].call(o.exports, o, o.exports, a), o.l = !0, o.exports
-    } a.m = t, a.c = r, a.d
-        = function (t, e, o) { a.o(t, e) || Object.defineProperty(t, e, { enumerable: !0, get: o }) }, a.r
-        = function (t) { "undefined" !== typeof Symbol && Symbol.toStringTag && Object.defineProperty(t, Symbol.toStringTag, { value: "Module" }), 
-            Object.defineProperty(t, "__esModule", { value: !0 }) }, a.t
-        = function (t, e) {
+        }; 
+        return t[e].call(o.exports, o, o.exports, a), o.l = !0, o.exports
+    } 
+    a.m = t, a.c = r, a.d = function (t, e, o) { a.o(t, e) || Object.defineProperty(t, e, { enumerable: !0, get: o }) }, 
+    a.r = function (t) 
+        { "undefined" !== typeof Symbol && Symbol.toStringTag && Object.defineProperty(t, Symbol.toStringTag, { value: "Module" }), 
+            Object.defineProperty(t, "__esModule", { value: !0 }) }, 
+    a.t = function (t, e) 
+        {
             if (1 & e && (t = a(t)), 8 & e) return t; if (4 & e && "object" === typeof t && t && t.__esModule) return t;
             var o = Object.create(null); if (a.r(o), Object.defineProperty(o, "default", { enumerable: !0, value: t }), 2 & e && "string" != typeof t)
                 for (var r in t) a.d(o, r, function (e) { return t[e] }.bind(null, r)); return o
-        }, a.n = function (t) {
+        }, 
+    a.n = function (t) 
+        {
             var e = t && t.__esModule ? function () { return t["default"] } : function () { return t };
             return a.d(e, "a", e), e
-        }, a.o = function (t, e) { return Object.prototype.hasOwnProperty.call(t, e) }, a.p = "/";
-    var s = window["webpackJsonp"] = window["webpackJsonp"] || [], u = s.push.bind(s); s.push = e, s = s.slice();
-    for (var l = 0; l < s.length; l++)e(s[l]); var p = u; i.push([0, "chunk-vendors"]), o()
-})({
-    0: function (t, e, o) { t.exports = o("56d7") }, "034f": function (t, e, o) {
-        "use strict"; var r = o("85ec"), n = o.n(r); n.a
-    }, "56d7": function (t, e, o) {
-        "use strict"; o.r(e); o("e260"), o("e6cf"), o("cca6"), o("a79d");
-        var r = o("2b0e"), n = function () {
+        }, 
+    a.o = function (t, e) 
+        { 
+            return Object.prototype.hasOwnProperty.call(t, e) }, a.p = "/";
+            var s = window["webpackJsonp"] = window["webpackJsonp"] || [], u = s.push.bind(s); s.push = e, s = s.slice();
+            for (var l = 0; l < s.length; l++)e(s[l]); var p = u; i.push([0, "chunk-vendors"]), o()
+    })
+    ({
+        0: function (t, e, o) { t.exports = o("56d7") }, 
+        "034f": function (t, e, o) { "use strict"; 
+            var r = o("85ec"), n = o.n(r); n.a
+        }, 
+        "56d7": function (t, e, o) {
+            "use strict"; o.r(e); o("e260"), o("e6cf"), o("cca6"), o("a79d");
+            var r = o("2b0e"), n = function () {
             var t = this, e = t.$createElement, o = t._self._c || e; return o("div", { attrs: { id: "app" } }, [o("Donghua")], 1)
         }, i = [], a = function () {
             var t = this, e = t.$createElement, o = t._self._c || e;
             return o("canvas", { attrs: { id: "test" } })
-        }, s = [], u = (o("cb29"), o("b0c0"), o("d3b7"), o("25f0"), o("8513"), o("9d58"), null), l = null, p = [], d = 200,
-            g = { x: 0, y: 0, z: 10 }, c = 3, f = { up: 87, down: 83, left: 65, right: 68, talk: 32, send: 13 }, h = { x: 0, y: 0 },
-            b = { x: { min: 0, max: 2e3 }, y: { min: 0, max: 2e3 }, z: { min: 0, max: 10 } }, y = 2, x = { up: !1, down: !1, left: !1, right: !1 },
-            m = [.5, 0, 0], S = !0, v = 0, w = 0, R = { x: 0, y: 0 }, M = { x: 0, y: 0 }, F = null, _ = !1, q = null, E = null,
-            k = { x: 0, y: 0, e_x: 0, e_y: 0, r_x: 0, r_y: 0, bot_id: "", name: "", gender: 0 }, z = {}, B = !1, P = { x: 0, y: 0 }, W = {}, O = {};
-        function A() {
-            l = document.getElementById("test"), l.width = window.innerWidth, l.height = window.innerHeight, u = l.getContext("2d"),
-                u.shadowColor = "white", u.shadowBlur = 10, h = { x: l.width / 2, y: l.height / 2 }, g.x = l.width / 2, g.y = l.height / 2,
-                b.x.max = l.width, b.y.max = l.height, p = L(), k.bot_id = Math.random().toString(36).substr(2), D()
+            }, 
+            s = [], 
+            u = (o("cb29"), o("b0c0"), o("d3b7"), o("25f0"), o("8513"), o("9d58"), null), 
+            l = null, 
+            p = [], 
+            d = 200,
+            g = { x: 0, y: 0, z: 10 }, 
+            c = 3, 
+            f = { up: 87, down: 83, left: 65, right: 68, talk: 32, send: 13 },  // key 세팅 
+            h = { x: 0, y: 0 },
+            b = { x: { min: 0, max: 2e3 }, y: { min: 0, max: 2e3 }, z: { min: 0, max: 10 } }, 
+            y = 2, 
+            x = { up: !1, down: !1, left: !1, right: !1 }, // 방향 이동중인지 체크 값?
+            m = [.5, 0, 0], S = !0, v = 0, w = 0, 
+            R = { x: 0, y: 0 }, 
+            M = { x: 0, y: 0 },  // 마우스커서 위치
+            F = null, _ = !1, q = null, E = null,
+            k = { x: 0, y: 0, e_x: 0, e_y: 0, r_x: 0, r_y: 0, bot_id: "", name: "", gender: 0 }, 
+            z = {}, 
+            B = !1, 
+            P = { x: 0, y: 0 },  // player 의 좌표
+            W = {}, 
+            O = {};
+        function A() 
+        {
+            l = document.getElementById("test"), 
+            l.width = window.innerWidth, 
+            l.height = window.innerHeight, 
+            u = l.getContext("2d"), u.shadowColor = "white", u.shadowBlur = 10, 
+            h = { x: l.width / 2, y: l.height / 2 }, 
+            g.x = l.width / 2, 
+            g.y = l.height / 2,
+            b.x.max = l.width, 
+            b.y.max = l.height, 
+            p = L(), 
+            k.bot_id = Math.random().toString(36).substr(2), 
+            D()
         }
         function C() {
             u.clearRect(0, 0, l.width, l.height), u.fillStyle = "rgb(20,7,34)", u.fillRect(0, 0, l.width, l.height),
@@ -87,24 +129,32 @@
         function $(t, e, o, r, n) { t.beginPath(), t.arc(e, o, n, 0, 2 * Math.PI), t.fillStyle = r, t.fill() }
         function H() {
             var t = arguments.length > 0
-                && void 0 !== arguments[0] ? arguments[0] : l.width / 2, e = arguments.length > 1
-                    && void 0 !== arguments[1] ? arguments[1] : l.height / 2; u.beginPath(), t += 5, e += 5, u.arc(t, e, 8, 0, 2 * Math.PI),
-                        k.gender === proto.botStatusRequest.gender_type.WOMAN ? u.fillStyle = "rgb(255,20,147)" : u.fillStyle = "rgb(0,191,255)", u.fill(), u.beginPath();
-            var o = U(t, e, 8); k.e_x = o[0], k.e_y = o[1], u.arc(o[0], o[1], 4, 0, 2 * Math.PI), u.fillStyle = "rgb(255,255,255)",
-                u.fill(), u.font = "12px Arial", k.gender === proto.botStatusRequest.gender_type.WOMAN ? u.fillStyle = "rgb(255,20,147)" :
-                    u.fillStyle = "rgb(0,191,255)", u.fillText(k.name, t - 8, e + 20)
+                && void 0 !== arguments[0] ? arguments[0] : l.width / 2, 
+                e = arguments.length > 1
+                && void 0 !== arguments[1] ? arguments[1] : l.height / 2; 
+            u.beginPath(), 
+            t += 5, e += 5, 
+            u.arc(t, e, 8, 0, 2 * Math.PI),
+            k.gender === proto.botStatusRequest.gender_type.WOMAN ? u.fillStyle = "rgb(255,20,147)" : u.fillStyle = "rgb(0,191,255)", 
+            u.fill(), u.beginPath();
+            var o = U(t, e, 8); 
+            k.e_x = o[0], k.e_y = o[1], u.arc(o[0], o[1], 4, 0, 2 * Math.PI), 
+            u.fillStyle = "rgb(255,255,255)",
+            u.fill(), u.font = "12px Arial", k.gender === proto.botStatusRequest.gender_type.WOMAN ? u.fillStyle = "rgb(255,20,147)" :
+            u.fillStyle = "rgb(0,191,255)", u.fillText(k.name, t - 8, e + 20)
         }
         function J() {
             var t = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : l.width / 2, e = arguments.length > 1
                 && void 0 !== arguments[1] ? arguments[1] : l.height / 2, o = arguments.length > 2 ?
-                    arguments[2] : void 0, r = arguments.length > 3 ?
-                        arguments[3] : void 0, n = arguments.length > 4 ?
-                            arguments[4] : void 0, i = arguments.length > 5 ?
-                                arguments[5] : void 0;
-            u.beginPath(), t += 5, e += 5, u.arc(t, e, 8, 0, 2 * Math.PI), i === proto.botStatusRequest.gender_type.WOMAN ?
-                u.fillStyle = "rgb(255,20,147)" : u.fillStyle = "rgb(0,191,255)", u.fill(), u.beginPath(),
-                u.arc(o, r, 4, 0, 2 * Math.PI), u.fillStyle = "rgb(255,255,255)", u.fill(), u.font = "12px Arial", i === proto.botStatusRequest.gender_type.WOMAN ?
-                    u.fillStyle = "rgb(255,20,147)" : u.fillStyle = "rgb(0,191,255)", u.fillText(n, t - 8, e + 20)
+                arguments[2] : void 0, r = arguments.length > 3 ?
+                arguments[3] : void 0, n = arguments.length > 4 ?
+                arguments[4] : void 0, i = arguments.length > 5 ?
+                arguments[5] : void 0;
+            u.beginPath(), t += 5, e += 5, u.arc(t, e, 8, 0, 2 * Math.PI), 
+            i === proto.botStatusRequest.gender_type.WOMAN ? u.fillStyle = "rgb(255,20,147)" : u.fillStyle = "rgb(0,191,255)", 
+            u.fill(), u.beginPath(),u.arc(o, r, 4, 0, 2 * Math.PI), u.fillStyle = "rgb(255,255,255)", u.fill(), u.font = "12px Arial", 
+            i === proto.botStatusRequest.gender_type.WOMAN ? u.fillStyle = "rgb(255,20,147)" : u.fillStyle = "rgb(0,191,255)", 
+            u.fillText(n, t - 8, e + 20)
         }
         function U(t, e, o) {
             var r = 5, n = (t - M.x) * (o - r) / Math.sqrt(Math.pow(t - M.x, 2) + Math.pow(e - M.y, 2)), 
@@ -132,10 +182,12 @@
                     case f.right: x.right = !1; break;
                     case f.left: x.left = !1; break
                 }
-                t.keyCode != f.up && t.keyCode != f.down && t.keyCode != f.left && t.keyCode != f.right || (S = !0, v = 1)
+                t.keyCode != f.up && t.keyCode != f.down && t.keyCode != f.left && t.keyCode != f.right 
+                || (S = !0, v = 1)
             })),
+                // 펑션 t 는 마우스의 t.x , +t.y 좌표
                 window.addEventListener("mousemove", (function (t) {
-                    M = { x: t.x, y: t.y }
+                    M = { x: t.x, y: t.y };
                 })), 
                 //dblclick
                 window.addEventListener("dblclick", (function (t) {
@@ -146,10 +198,14 @@
         }
         // space bar 효과
         function K() {
-            if (null != F) return !1; _ = !0, F = document.createElement("input"), F.setAttribute("style", "position:fixed;left:" + (g.x + 20) + "px;top:" + (g.y - 25) + "px;background-color:rgba(200,200,200,0.2);border:1px solid rgba(200,200,200,0.2);border-radius:10px;padding:5px;outline:none;width:150px;color:white;font-size:12px"),
+            if (null != F) 
+                return !1; _ = !0, 
+                F = document.createElement("input"), 
+                F.setAttribute("style", "position:fixed;left:" + (g.x + 20) + "px;top:" + (g.y - 25) + "px;background-color:rgba(200,200,200,0.2);border:1px solid rgba(200,200,200,0.2);border-radius:10px;padding:5px;outline:none;width:150px;color:white;font-size:12px"),
                 F.setAttribute("maxlength", 50),
                 document.body.appendChild(F), F.addEventListener("focus", (function () { })),
-                F.addEventListener("blur", (function () { document.body.removeChild(F), F = null, _ = !1 })), F.focus()
+                F.addEventListener("blur", (function () { document.body.removeChild(F), F = null, _ = !1 })), 
+                F.focus()
         }
         function Q() {
             if (!F || !F.value) return !1;
@@ -160,18 +216,37 @@
         }
         function Z(t) {
             var e = document.createElement("p");
-            e.innerHTML = "<span style='padding:0 5px;margin:5px 0;display:inline-block;background-color:rgba(200,200,200,0.2);border:1px solid rgba(200,200,200,0.2);border-radius:10px;'>" + t + "</span>", q.appendChild(e), setTimeout((function () { q.removeChild(e) }), 8e3)
+            e.innerHTML = "<span style='padding:0 5px;margin:5px 0;display:inline-block;background-color:rgba(200,200,200,0.2);border:1px solid rgba(200,200,200,0.2);border-radius:10px;'>" 
+            + t + "</span>", q.appendChild(e), setTimeout((function () { q.removeChild(e) }), 8e3);
+            dp_Chat.innerHTML = '<pre>'+t+'</pre>' +  dp_Chat.innerHTML; // 채팅 기록도 넣어 주고
         }
-        function tt() { for (var t in W) t !== k.bot_id && et(W[t].r_x + W[t].x - P.x, W[t].r_y + W[t].y - P.y) && (J(W[t].r_x + W[t].x - P.x, W[t].r_y + W[t].y - P.y, W[t].r_x + W[t].e_x - P.x, W[t].r_y + W[t].e_y - P.y, W[t].name, W[t].gender), ot(t), W[t].msg && (rt(t, W[t].msg), W[t].msg = ""), nt(t)) }
-        function et(t, e) { return !(t < 0) && (!(e < 0) && (!(t > l.width) && !(e > l.height))) }
+        function tt() { 
+            for (var t in W) 
+                t !== k.bot_id && et(W[t].r_x + W[t].x - P.x, W[t].r_y + W[t].y - P.y) 
+                && (J(W[t].r_x + W[t].x - P.x, 
+                    W[t].r_y + W[t].y - P.y, W[t].r_x + W[t].e_x - P.x, 
+                    W[t].r_y + W[t].e_y - P.y, 
+                    W[t].name, W[t].gender), ot(t), W[t].msg && (rt(t, W[t].msg), W[t].msg = ""), 
+                nt(t)) 
+        }
+        function et(t, e) { 
+            return !(t < 0) && (!(e < 0) && (!(t > l.width) && !(e > l.height))) 
+        }
         function ot(t) {
-            O[t] || (O[t] = document.createElement("div"), O[t].setAttribute("style", "position:fixed;left:" + (W[t].x + W[t].r_x - P.x) + "px;bottom:" + (l.height - (W[t].y + W[t].r_y - P.y) + 20) + "px;color:white;font-size:12px"),
-                document.body.appendChild(O[t]))
+            O[t] || (O[t] = document.createElement("div"), O[t].setAttribute("style", "position:fixed;left:" 
+                + (W[t].x + W[t].r_x - P.x) + "px;bottom:" 
+                + (l.height - (W[t].y + W[t].r_y - P.y) + 20) + "px;color:white;font-size:12px"),
+            document.body.appendChild(O[t]))
         }
         function rt(t, e) {
-            W[t]; var o = O[t], r = document.createElement("p");
-            r.innerHTML = "<span style='padding:0 5px;margin:5px 0;display:inline-block;background-color:rgba(200,200,200,0.2);border:1px solid rgba(200,200,200,0.2);border-radius:10px;'>" + e + "</span>",
-                o.appendChild(r), setTimeout((function () { o.removeChild(r) }), 15e3)
+            W[t]; 
+            var o = O[t], 
+            r = document.createElement("p");
+            r.innerHTML = "<span style='padding:0 5px;margin:5px 0;display:inline-block;background-color:rgba(200,200,200,0.2);border:1px solid rgba(200,200,200,0.2);border-radius:10px;'>" 
+            + e + "</span>",
+            o.appendChild(r), 
+            setTimeout((function () { o.removeChild(r) }), 15e3);
+            dp_Chat.innerHTML = dp_Chat.innerHTML + '<p>'+e+'</p>'; // 채팅 기록도 넣어 주고
         }
         function nt(t) {
             var e = W[t], o = O[t]; o.setAttribute("style", "position:fixed;left:" + (e.x + e.r_x - P.x) + "px;bottom:" + (l.height - (e.y + e.r_y - P.y) + 20) + "px;color:white;font-size:12px")
@@ -205,13 +280,20 @@
         function pt() {
             var t = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : ""; if (!B) return !1;
             var e = !1; if (z) for (var o in k) k[o] !== z[o] && (e = !0); else e = !0; if (e || t) {
-                var r = new proto.botStatusRequest; r.setBotId(k.bot_id), r.setX(g.x), r.setY(g.y), r.setEyeX(k.e_x), r.setEyeY(k.e_y),
-                    r.setRealX(P.x), r.setRealY(P.y), r.setMsg(t), r.setName(k.name), r.setGender(k.gender), E.send(r.serializeBinary()), Object.assign(z, k)
+                var r = new proto.botStatusRequest; 
+                r.setBotId(k.bot_id), r.setX(g.x), r.setY(g.y), r.setEyeX(k.e_x), r.setEyeY(k.e_y),
+                r.setRealX(P.x), r.setRealY(P.y), r.setMsg(t), r.setName(k.name), r.setGender(k.gender), 
+                E.send(r.serializeBinary()), Object.assign(z, k)
             }
+            // 2020-09-24 X Y 촤표를 찍어 달라고 한다
+            dp_Xy.innerHTML = P.x+':X,'+P.y+':y '; 
+            //dp_Xy.innerHTML = g.x+':X,'+g.y+':y /' +h.x+':X,'+h.y+':y /'+R.x+':X,'+R.y+':y /'+M.x+':X,'+M.y+':y /'+k.x+':X,'+k.y+':y /'+P.x+':X,'+P.y+':y '; 
         }
         function dt() {
-            var t = localStorage.getItem("star_name"); k.name = null !== t && "" !== t ? t : "guest" + Math.random().toString(36);
-            var e = localStorage.getItem("star_gender"); k.gender = null !== e ? parseInt(e) : proto.botStatusRequest.gender_type.MAN
+            var t = localStorage.getItem("star_name"); 
+            k.name = null !== t && "" !== t ? t : "guest" + Math.random().toString(36);
+            var e = localStorage.getItem("star_gender"); 
+            k.gender = null !== e ? parseInt(e) : proto.botStatusRequest.gender_type.MAN
         }
         function gt() {
             var t = document.createElement("div");
@@ -257,10 +339,16 @@
             return r.setAttribute("style", "width:25px;height:25px;border:1px solid rgba(200,200,0,0.5);color:white;cursor:default;border-radius:5px;"),
                 r.setAttribute("src", e), r.setAttribute("title", o), t.appendChild(r), r
         }
+        // 좌측 하단 사용 설명
         function ft() {
             var t = document.createElement("div");
             t.setAttribute("style", "position:fixed;left:5px;bottom:0px;width:500px;height:50;color:rgba(200,200,200,0.8);cursor:default;border-radius:5px;"),
-                t.innerHTML = "<p>1. W A S D 는 상하좌우 </p><p>2. spacebar (혹은 더블클릭)는 메세지 보내기</p><p>3. 좌 상단 닉네임 클릭(닉네임 수정 후 바깥 쪽을 클릭)</p>"
+                t.innerHTML = "<p id='dp_Xy'>X:101,Y:101</p>"
+                    +"<div id='dp_Chat' style='width: 400px;height:100px;margin: 0 0 30px 0;overflow-y: scroll;'>"
+                    +"<p>1. W A S D 는 상하좌우 </p>"
+                    +"<p>2. spacebar (혹은 더블클릭)는 메세지 보내기</p>"
+                    +"<p>3. 좌 상단 닉네임 클릭(닉네임 수정 후 바깥 쪽을 클릭)</p>"
+                    +"</div>"
                 , document.body.appendChild(t)
         }
         var ht = function () {
@@ -268,21 +356,26 @@
         }, bt = {
             data: function () { return {} }, methods: {},
             mounted: function () { ht() }
-        }, yt = bt, xt = o("2877"), mt = Object(xt["a"])(yt, a, s, !1, null, null, null), St = mt.exports,
+        },  yt = bt, xt = o("2877"), 
+            mt = Object(xt["a"])(yt, a, s, !1, null, null, null), St = mt.exports,
             vt = { name: "App", components: { Donghua: St } }, wt = vt,
             Rt = (o("034f"), Object(xt["a"])(wt, n, i, !1, null, null, null)),
             Mt = Rt.exports;
         new r["a"]({ render: function (t) { return t(Mt) } }).$mount("#app")
-    }, "85ec": function (t, e, o) { }, "9d58": function (t, e, o) {
-        var r = o("8513"), n = r, i = Function("return this")();
-        n.exportSymbol("proto.botStatusRequest", null, i),
+    }, "85ec": function (t, e, o) { }, 
+        "9d58": function (t, e, o) {
+            var r = o("8513"), n = r, i = Function("return this")();
+            n.exportSymbol("proto.botStatusRequest", null, i),
             n.exportSymbol("proto.botStatusRequest.gender_type", null, i),
             n.exportSymbol("proto.botStatusRequest.status_type", null, i),
-            n.exportSymbol("proto.botStatusResponse", null, i), proto.botStatusRequest = function (t) {
+            n.exportSymbol("proto.botStatusResponse", null, i), 
+            proto.botStatusRequest = function (t) {
                 r.Message.initialize(this, t, 0, -1, null, null)
-            }, n.inherits(proto.botStatusRequest, r.Message), n.DEBUG && !COMPILED && (proto.botStatusRequest.displayName = "proto.botStatusRequest"),
-            proto.botStatusResponse = function (t) {
-                r.Message.initialize(this, t, 0, -1, proto.botStatusResponse.repeatedFields_, null)
+            }, n.inherits(proto.botStatusRequest, r.Message), n.DEBUG && !COMPILED && (
+                proto.botStatusRequest.displayName = "proto.botStatusRequest"),
+                proto.botStatusResponse = function (t) {
+                    r.Message.initialize(this, t, 0, -1, 
+                        proto.botStatusResponse.repeatedFields_, null)
             },
             n.inherits(proto.botStatusResponse, r.Message), n.DEBUG && !COMPILED && (proto.botStatusResponse.displayName = "proto.botStatusResponse"),
             r.Message.GENERATE_TO_OBJECT && (proto.botStatusRequest.prototype.toObject = function (t) {
@@ -303,7 +396,9 @@
                 };
                 return t && (o.$jspbMessageInstance = e), o
             }), proto.botStatusRequest.deserializeBinary = function (t) {
-                var e = new r.BinaryReader(t), o = new proto.botStatusRequest; return proto.botStatusRequest.deserializeBinaryFromReader(o, e)
+                var e = new r.BinaryReader(t), 
+                    o = new proto.botStatusRequest; 
+                return proto.botStatusRequest.deserializeBinaryFromReader(o, e)
             },
             proto.botStatusRequest.deserializeBinaryFromReader = function (t, e) {
                 while (e.nextField()) {
@@ -360,12 +455,14 @@
             , proto.botStatusResponse.repeatedFields_ = [1], r.Message.GENERATE_TO_OBJECT && (proto.botStatusResponse.prototype.toObject = function (t) {
                 return proto.botStatusResponse.toObject(t, this)
             }
-                , proto.botStatusResponse.toObject = function (t, e) {
-                    var o = { botStatusList: r.Message.toObjectList(e.getBotStatusList(), proto.botStatusRequest.toObject, t) };
+            , proto.botStatusResponse.toObject = function (t, e) {
+                    var o = { botStatusList: r.Message.toObjectList(e.getBotStatusList()
+            , proto.botStatusRequest.toObject, t) };
                     return t && (o.$jspbMessageInstance = e), o
-                }), proto.botStatusResponse.deserializeBinary = function (t) {
+                })
+            , proto.botStatusResponse.deserializeBinary = function (t) {
                     var e = new r.BinaryReader(t), o = new proto.botStatusResponse; return proto.botStatusResponse.deserializeBinaryFromReader(o, e)
-                }
+               }
             , proto.botStatusResponse.deserializeBinaryFromReader = function (t, e) {
                 while (e.nextField()) {
                     if (e.isEndGroup()) break;
