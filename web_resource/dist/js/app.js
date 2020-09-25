@@ -226,7 +226,7 @@
                 && (J(W[t].r_x + W[t].x - P.x, 
                     W[t].r_y + W[t].y - P.y, W[t].r_x + W[t].e_x - P.x, 
                     W[t].r_y + W[t].e_y - P.y, 
-                    W[t].name, W[t].gender), ot(t), W[t].msg && (rt(t, W[t].msg), W[t].msg = ""), 
+                    W[t].name, W[t].gender), ot(t), W[t].msg && (rt(t, W[t].msg, W[t].name), W[t].msg = ""), 
                 nt(t)) 
         }
         function et(t, e) { 
@@ -238,7 +238,8 @@
                 + (l.height - (W[t].y + W[t].r_y - P.y) + 20) + "px;color:white;font-size:12px"),
             document.body.appendChild(O[t]))
         }
-        function rt(t, e) {
+        //타인이 말하면 뿌려주기
+        function rt(t, e, sname) {
             W[t]; 
             var o = O[t], 
             r = document.createElement("p");
@@ -246,10 +247,11 @@
             + e + "</span>",
             o.appendChild(r), 
             setTimeout((function () { o.removeChild(r) }), 15e3);
-            dp_Chat.innerHTML = '<pre> o :'+e+'</pre>'+dp_Chat.innerHTML ; // 채팅 기록도 넣어 주고
+            dp_Chat.innerHTML = '<pre> '+sname+' :'+e+'</pre>'+dp_Chat.innerHTML ; // 채팅 기록도 넣어 주고
         }
         function nt(t) {
-            var e = W[t], o = O[t]; o.setAttribute("style", "position:fixed;left:" + (e.x + e.r_x - P.x) + "px;bottom:" + (l.height - (e.y + e.r_y - P.y) + 20) + "px;color:white;font-size:12px")
+            var e = W[t], o = O[t]; 
+            o.setAttribute("style", "position:fixed;left:" + (e.x + e.r_x - P.x) + "px;bottom:" + (l.height - (e.y + e.r_y - P.y) + 20) + "px;color:white;font-size:12px")
         }
         function it() { null != q && q.setAttribute("style", "position:fixed;left:" + g.x + "px;bottom:" + (l.height - g.y + 20) + "px;color:white;font-size:12px") }
         function at() {
@@ -346,11 +348,12 @@
         function ft() {
             var t = document.createElement("div");
             t.setAttribute("style", "position:fixed;left:5px;bottom:0px;width:500px;height:50;color:rgba(200,200,200,0.8);cursor:default;border-radius:5px;"),
-                t.innerHTML = "<p id='dp_Xy'>X:101,Y:101</p>"
+                t.innerHTML = "<p id='dp_Xy'>X:0,Y:0</p>"
                     +"<div id='dp_Chat' style='width: 400px;height:100px;margin: 0 0 30px 0;overflow-y: scroll;'>"
-                    +"<p>1. W A S D 는 상하좌우 </p>"
-                    +"<p>2. spacebar (혹은 더블클릭)는 메세지 보내기</p>"
+                    +"<p>1. 좌측 상단의 ↑↓←→아이콘 으로 (키보드WASD 상하좌우) 이동</p>"
+                    +"<p>2. 좌측 상단의 말풍선 (키보드 spacebar)는 메세지 보내기</p>"
                     +"<p>3. 좌 상단 닉네임 클릭(닉네임 수정 후 바깥 쪽을 클릭)</p>"
+                    +"<p>4. Ver 2020-09-25#2 </p>"
                     +"</div>"
                 , document.body.appendChild(t)
         }
