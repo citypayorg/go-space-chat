@@ -246,7 +246,7 @@
             + e + "</span>",
             o.appendChild(r), 
             setTimeout((function () { o.removeChild(r) }), 15e3);
-            dp_Chat.innerHTML = dp_Chat.innerHTML + '<p>'+e+'</p>'; // 채팅 기록도 넣어 주고
+            dp_Chat.innerHTML = '<pre> o :'+e+'</pre>'+dp_Chat.innerHTML ; // 채팅 기록도 넣어 주고
         }
         function nt(t) {
             var e = W[t], o = O[t]; o.setAttribute("style", "position:fixed;left:" + (e.x + e.r_x - P.x) + "px;bottom:" + (l.height - (e.y + e.r_y - P.y) + 20) + "px;color:white;font-size:12px")
@@ -314,11 +314,11 @@
             var n = ct(t, "image/w.png", "여성");
             n.addEventListener("click", (function (t) { k.gender = proto.botStatusRequest.gender_type.WOMAN, localStorage.setItem("star_gender", k.gender) }))
             //
-            var imgUp = ct(t, "image/up.jpg", "위로");
+            var imgUp = ct(t, "image/up.png", "위로");
             imgUp.addEventListener("mouseover", (function (t) { x.up = !0, x.down = !1;}));
             imgUp.addEventListener("mouseout", (function (t) { x.up = !1;(S = !0, v = 1);}));
 
-            var imgDn = ct(t, "image/dn.jpg", "아래로");
+            var imgDn = ct(t, "image/dn.png", "아래로");
             imgDn.addEventListener("mouseover", (function (t) { x.up = !1, x.down = !0;}));
             imgDn.addEventListener("mouseout", (function (t) { x.down = !1;(S = !0, v = 1);}));
 
@@ -326,13 +326,16 @@
             // imgStop.addEventListener("click", (function (t) { x.up = !1, x.down = !1;x.left = !1, x.right = !1;}));
             // imgStop.addEventListener("mouseout", (function (t) { x.down = !1}));
 
-            var imgLeft = ct(t, "image/left.jpg", "좌로");
+            var imgLeft = ct(t, "image/left.png", "좌로");
             imgLeft.addEventListener("mouseover", (function (t) { x.left = !0, x.right = !1;}));
             imgLeft.addEventListener("mouseout", (function (t) { x.left = !1;(S = !0, v = 1);}));
 
-            var imgRight = ct(t, "image/right.jpg", "우로");
+            var imgRight = ct(t, "image/right.png", "우로");
             imgRight.addEventListener("mouseover", (function (t) { x.right = !0, x.left = !1;}));
             imgRight.addEventListener("mouseout", (function (t) { x.right = !1;(S = !0, v = 1);}));
+
+            var imgChat = ct(t, "image/chat.png", "채팅");
+            imgChat.addEventListener("click", (function (t) { K(); }))
         }
         function ct(t, e) {
             var o = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : "", r = document.createElement("img");
