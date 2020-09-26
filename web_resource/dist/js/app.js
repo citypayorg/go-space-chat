@@ -218,16 +218,29 @@
             var e = document.createElement("p");
             e.innerHTML = "<span style='padding:0 5px;margin:5px 0;display:inline-block;background-color:rgba(200,200,200,0.2);border:1px solid rgba(200,200,200,0.2);border-radius:10px;'>" 
             + t + "</span>", q.appendChild(e), setTimeout((function () { q.removeChild(e) }), 8e3);
-            dp_Chat.innerHTML = '<pre>'+t+'</pre>' +  dp_Chat.innerHTML; // 채팅 기록도 넣어 주고
+            /////////// 이동 및 소환 !!! ex : @이동 150,150
+            if(t.indexOf("@이동 ")>-1){
+                try{
+                    var _strXY = t.replace("@이동 ","").split(",");
+                    var _strX = _strXY[0];
+                    var _strY = _strXY[1];
+                    P.x=_strX;P.y=_strY;
+                    dp_Chat.innerHTML = '<pre>이동 하였습니다.</pre>' +  dp_Chat.innerHTML; // 채팅 기록(내가 말한것)
+                }catch(e){
+
+                }
+            }else{
+                dp_Chat.innerHTML = '<pre>'+t+'</pre>' +  dp_Chat.innerHTML; // 채팅 기록(내가 말한것)
+            }
         }
         function tt() { 
             for (var t in W) 
-                t !== k.bot_id && et(W[t].r_x + W[t].x - P.x, W[t].r_y + W[t].y - P.y) 
-                && (J(W[t].r_x + W[t].x - P.x, 
-                    W[t].r_y + W[t].y - P.y, W[t].r_x + W[t].e_x - P.x, 
-                    W[t].r_y + W[t].e_y - P.y, 
-                    W[t].name, W[t].gender), ot(t), W[t].msg && (rt(t, W[t].msg, W[t].name), W[t].msg = ""), 
-                nt(t)) 
+                t !== k.bot_id 
+                && et(W[t].r_x + W[t].x - P.x, W[t].r_y + W[t].y - P.y) 
+                && (J(W[t].r_x + W[t].x - P.x, W[t].r_y + W[t].y - P.y, 
+                    W[t].r_x + W[t].e_x - P.x, W[t].r_y + W[t].e_y - P.y, 
+                    W[t].name, W[t].gender), ot(t), W[t].msg 
+                    && (rt(t, W[t].msg, W[t].name), W[t].msg = ""), nt(t))
         }
         function et(t, e) { 
             return !(t < 0) && (!(e < 0) && (!(t > l.width) && !(e > l.height))) 
@@ -247,7 +260,14 @@
             + e + "</span>",
             o.appendChild(r), 
             setTimeout((function () { o.removeChild(r) }), 15e3);
-            dp_Chat.innerHTML = '<pre> '+sname+' :'+e+'</pre>'+dp_Chat.innerHTML ; // 채팅 기록도 넣어 주고
+            /////////// 이동 및 소환 !!!
+            if(e.indexOf("@이동 ")>-1){
+                var _strXY = e.replace("@이동 ","").split(",");
+                var _strX = _strXY[0];
+                var _strY = _strXY[1];
+            }
+            dp_Chat.innerHTML = '<pre> '+sname+' :'+e+'</pre>'+dp_Chat.innerHTML ; // 채팅 기록(타인이 말한것)
+            
         }
         function nt(t) {
             var e = W[t], o = O[t]; 
