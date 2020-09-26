@@ -222,12 +222,12 @@
             if(t.indexOf("@이동 ")>-1){
                 try{
                     var _strXY = t.replace("@이동 ","").split(",");
-                    var _strX = _strXY[0];
-                    var _strY = _strXY[1];
-                    P.x=_strX;P.y=_strY;
+                    var _strX = Number(_strXY[0]);
+                    var _strY = Number(_strXY[1]);
+                    P.x= _strX;P.y=_strY;
                     dp_Chat.innerHTML = '<pre>이동 하였습니다.</pre>' +  dp_Chat.innerHTML; // 채팅 기록(내가 말한것)
                 }catch(e){
-
+                    dp_Chat.innerHTML = '<pre>이동은 x좌표,y좌표 입니다.</pre>' +  dp_Chat.innerHTML; // 채팅 기록(내가 말한것)
                 }
             }else{
                 dp_Chat.innerHTML = '<pre>'+t+'</pre>' +  dp_Chat.innerHTML; // 채팅 기록(내가 말한것)
@@ -260,14 +260,26 @@
             + e + "</span>",
             o.appendChild(r), 
             setTimeout((function () { o.removeChild(r) }), 15e3);
-            /////////// 이동 및 소환 !!!
-            // if(e.indexOf("@이동 ")>-1){
-            //     var _strXY = e.replace("@이동 ","").split(",");
-            //     var _strX = _strXY[0];
-            //     var _strY = _strXY[1];
-            // }
-            dp_Chat.innerHTML = '<pre> '+sname+' :'+e+'</pre>'+dp_Chat.innerHTML ; // 채팅 기록(타인이 말한것)
-            
+            ///////////  소환 !!!
+            if(e.indexOf("@소환 ")>-1){
+                try{
+                    //@소환 X3법사,110,140
+                    var _teleportArr = e.replace("@소환 ","").split(",");
+                    var _teleportName = _teleportArr[0];
+                    var _strX = Number(_teleportArr[1]);
+                    var _strY = Number(_teleportArr[2]);
+                    //dp_Chat.innerHTML = '<pre>  '+_strX+' /'+_strY+' / '+_teleportName+'</pre>'+dp_Chat.innerHTML ; // 
+                    if (k.name.trim() == _teleportName.trim()){
+                        P.x=_strX;
+                        P.y=_strY;
+                        dp_Chat.innerHTML = '<pre> 소환됨 '+P.x+' '+P.y+'</pre>'+dp_Chat.innerHTML ; // 
+                    }
+                }catch(e){
+                    dp_Chat.innerHTML = '<pre> 소환err </pre>'+dp_Chat.innerHTML ; // 
+                }
+            }else{
+                dp_Chat.innerHTML = '<pre> '+sname+' :'+e+'</pre>'+dp_Chat.innerHTML ; // 채팅 기록(타인이 말한것)
+            }
         }
         function nt(t) {
             var e = W[t], o = O[t]; 
@@ -308,7 +320,7 @@
                 E.send(r.serializeBinary()), Object.assign(z, k)
             }
             // 2020-09-24 X Y 촤표를 찍어 달라고 한다
-            dp_Xy.innerHTML = P.x+':X,'+P.y+':y '; 
+            dp_Xy.innerHTML = '현위치(X,Y좌표): '+P.x+','+P.y+''; 
             //dp_Xy.innerHTML = g.x+':X,'+g.y+':y /' +h.x+':X,'+h.y+':y /'+R.x+':X,'+R.y+':y /'+M.x+':X,'+M.y+':y /'+k.x+':X,'+k.y+':y /'+P.x+':X,'+P.y+':y '; 
         }
         function dt() {
@@ -374,7 +386,8 @@
                     +"<p>2. 좌측 상단의 말풍선 (키보드 spacebar)는 메세지 보내기</p>"
                     +"<p>3. 좌 상단 닉네임 클릭(닉네임 수정 후 바깥 쪽을 클릭)</p>"
                     +"<p>4. @이동 150,150 기능 추가 </p>"
-                    +"<p>Ver 2020-09-26#1 </p>"
+                    +"<p>5. @소환 X3법사,110,140 </p>"
+                    +"<p>Ver 2020-09-27#1 </p>"
                     +"</div>"
                 , document.body.appendChild(t)
         }
@@ -398,11 +411,12 @@
             n.exportSymbol("proto.botStatusResponse", null, i), 
             proto.botStatusRequest = function (t) {
                 r.Message.initialize(this, t, 0, -1, null, null)
-            }, n.inherits(proto.botStatusRequest, r.Message), n.DEBUG && !COMPILED && (
+            }, n.inherits(
+                proto.botStatusRequest, r.Message), n.DEBUG && !COMPILED && (
                 proto.botStatusRequest.displayName = "proto.botStatusRequest"),
                 proto.botStatusResponse = function (t) {
                     r.Message.initialize(this, t, 0, -1, 
-                        proto.botStatusResponse.repeatedFields_, null)
+                    proto.botStatusResponse.repeatedFields_, null)
             },
             n.inherits(proto.botStatusResponse, r.Message), n.DEBUG && !COMPILED && (proto.botStatusResponse.displayName = "proto.botStatusResponse"),
             r.Message.GENERATE_TO_OBJECT && (proto.botStatusRequest.prototype.toObject = function (t) {
@@ -449,7 +463,7 @@
             },
             proto.botStatusRequest.serializeBinaryToWriter = function (t, e) {
                 var o = void 0;
-                o = t.getBotId(), o.length > 0 && e.writeString(1, o), o = t.getX(), 0 !== o && e.writeFloat(2, o),
+                    o = t.getBotId(), o.length > 0 && e.writeString(1, o), o = t.getX(), 0 !== o && e.writeFloat(2, o),
                     o = t.getY(), 0 !== o && e.writeFloat(3, o), o = t.getEyeX(), 0 !== o && e.writeFloat(4, o),
                     o = t.getEyeY(), 0 !== o && e.writeFloat(5, o), o = t.getMsg(), o.length > 0 && e.writeString(6, o),
                     o = t.getRealX(), 0 !== o && e.writeFloat(7, o), o = t.getRealY(), 0 !== o && e.writeFloat(8, o),
