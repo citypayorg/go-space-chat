@@ -261,11 +261,11 @@
             o.appendChild(r), 
             setTimeout((function () { o.removeChild(r) }), 15e3);
             /////////// 이동 및 소환 !!!
-            if(e.indexOf("@이동 ")>-1){
-                var _strXY = e.replace("@이동 ","").split(",");
-                var _strX = _strXY[0];
-                var _strY = _strXY[1];
-            }
+            // if(e.indexOf("@이동 ")>-1){
+            //     var _strXY = e.replace("@이동 ","").split(",");
+            //     var _strX = _strXY[0];
+            //     var _strY = _strXY[1];
+            // }
             dp_Chat.innerHTML = '<pre> '+sname+' :'+e+'</pre>'+dp_Chat.innerHTML ; // 채팅 기록(타인이 말한것)
             
         }
